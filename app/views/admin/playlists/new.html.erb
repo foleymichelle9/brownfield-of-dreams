@@ -1,0 +1,13 @@
+<h2>Import Playlist</h2>
+<%= form_tag "/admin/playlists", method: :post do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title, class: "block col-4 field" %>
+  <%= label_tag :description %>
+  <%= text_area_tag :description, class: "block col-4 field"  %>
+  <%= label_tag :thumbnail %>
+  <%= text_field_tag :thumbnail, class: "block col-4 field"  %>
+  <%= label_tag :playlist_id, "Playlist ID"%>
+  <%= text_field_tag :playlist_id, class: "block col-4 field"  %>
+
+  <%= submit_tag "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+<% end %>
