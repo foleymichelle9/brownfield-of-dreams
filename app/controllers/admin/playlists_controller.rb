@@ -5,10 +5,11 @@ class Admin::PlaylistsController < Admin::BaseController
 
   def create
     @tutorial = Tutorial.new(playlist_params)
-    #some json activity
-    #use searchresults method to get playlist info
-    #make new youtuberesults? that reaches into YoutubeService(API) to grab videos and find playlist - Use tutorial object?
-    #first Youtube service...get playlist_info
+    json = YoutubeService.new.playlist_info(params[:playlist_id])
+    @videos = json[:items].map do |video|
+      require "pry";binding.pry
+    end
+
     if @tutorial.save
       flash[:success] = "Successfully created tutorial. View it here"
       redirect_to dashboard_path
