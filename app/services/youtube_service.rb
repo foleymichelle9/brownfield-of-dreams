@@ -6,10 +6,10 @@ class YoutubeService
   end
 
   def playlist_info(id)
-    binding.pry
     params = { part: 'snippet,contentDetails', playlistId: id }
-
-    get_json('youtube/v3/videos', params)
+    
+   bob = get_json('youtube/v3/playlistItems', params)
+    binding.pry
   end
 
   private

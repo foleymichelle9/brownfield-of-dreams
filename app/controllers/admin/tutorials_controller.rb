@@ -17,8 +17,15 @@ class Admin::TutorialsController < Admin::BaseController
     else 
       redirect_to "/admin/dashboard"
       flash[:notice] = %Q[Successfully created tutorial.<a href="/tutorials/#{@tutorial.id}">View it here.</a>].html_safe
-      bob = YoutubeService.new.playlist_info(new_tutorial_params[:playlist_id])
-      binding.pry
+      playlist_data = YoutubeService.new.playlist_info(new_tutorial_params[:playlist_id])
+      video_params = {}
+      playlist_data[:items].each do |data| 
+        video_params[:id] = data[:id]
+        video_params[:title] = data[:snippet][:title]
+        video_params[:description] = data[:snippet][:description]
+        video_params[:thumbnail] = data[:snippet][:thumbnails][:default]
+        video_params[:tutorial_is] = @tutorial.id
+      end 
     end
   end
 
