@@ -7,6 +7,7 @@ class Admin::PlaylistsController < Admin::BaseController
     tutorial = Tutorial.new(playlist_params)
     if tutorial.save
     playlist_data = YoutubeService.new.playlist_info(params[:playlist_id])
+
     @videos = playlist_data[:items].each do |video_data|
       video_params = {
         :video_id => video_data[:id],
