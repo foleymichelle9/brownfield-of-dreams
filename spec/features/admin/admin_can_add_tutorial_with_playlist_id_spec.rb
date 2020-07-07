@@ -7,12 +7,12 @@ describe "An Admin can add tutorial " do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit '/admin/tutorials/new'
-    save_and_open_page
     click_on 'Import YouTube Playlist'
     fill_in :playlist_id, with: "PLpTHBOOvs-f2WJBInFYq1g-TxmG250HQ-"
     click_on 'Submit'
     
     expect(current_path).to eq('/admin/dashboard')
+    save_and_open_page
     expect(page).to have_content('Successfully created tutorial. View it here.')
     click_on 'View it here'
 

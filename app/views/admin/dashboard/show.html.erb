@@ -22,3 +22,10 @@
     </tr>
   <% end %>
 </table>
+
+<% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name %>">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div id="flash_<%= name %>"><%= sanitize(msg) %></div>
+  </div>
+<% end %>
