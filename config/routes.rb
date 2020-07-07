@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
-    
+
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
-      resources :videos, only: [:create]
+      resources :videos, only: [:create, :destroy]
     end
+
     resources :videos, only: [:edit, :update, :destroy]
 
     resources :playlists, only: [:new, :create]
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :update, :edit]
 
   resources :tutorials, only: [:show, :index] do
-    resources :videos, only: [:show, :index]
+    resources :videos, only: [:show, :index,]
   end
 
   resources :user_videos, only:[:create, :destroy]

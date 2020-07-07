@@ -6,7 +6,7 @@ class YoutubeService
 
   def playlist_info(id)
     params = { part: 'snippet,contentDetails', playlistId: id}
-    get_json('youtube/v3/playlistItems', params)
+    playlist_videos = get_json('youtube/v3/playlistItems', params)
   end
 
   private

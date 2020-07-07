@@ -18,6 +18,7 @@ describe "Admin Tutorials" do
     fill_in :playlist_id, with: "PLD8iUdp33PqSmH4NjDm6lk1YiNUhLCxj4"
     fill_in :title, with: "BuzzFeed Unsolved SuperNatural"
     fill_in :description, with: "Hey There Demons"
+    fill_in :thumbnail, with: "Thumbnail"
 
     click_on "Save"
     expect(current_path).to eq("/admin/dashboard")

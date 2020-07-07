@@ -17,6 +17,7 @@
       <div class="flash-message">
         <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, class: name %>
+          <%= msg.html_safe %>
         <% end %>
       </div>
 
