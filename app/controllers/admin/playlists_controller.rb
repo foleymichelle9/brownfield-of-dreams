@@ -7,16 +7,16 @@ class Admin::PlaylistsController < Admin::BaseController
     tutorial = Tutorial.new(playlist_params)
     tutorial.save
     playlist_data = YoutubeService.new.playlist_info(params[:playlist_id])
-    playlist_data[:items].each do |video_data|
+    @videos = playlist_data[:items].each do |video_data|
       video_params = {
-        :id => video_data[:id],
+        :video_id => video_data[:id],
         :title => video_data[:snippet][:title],
         :description => video_data[:snippet][:description],
         :thumbnail => video_data[:snippet][:thumbnails][:default]
       }
-      bob = Video.create(video_params)
+      tutorial.videos.create(video_params)
     end
-      flash[:notice] = "Successfully created tutorial. #{view_context.link_to("View it here", tutorial_path(tutorial.id))}"
+      flash[:notice] = %Q[Successfully created tutorial.<a href="/tutorials/#{tutorial.id}">View it here.</a>].html_safe
       redirect_to admin_dashboard_path
   end
 
