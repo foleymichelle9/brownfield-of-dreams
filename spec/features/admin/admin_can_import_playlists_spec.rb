@@ -33,6 +33,19 @@ describe "Admin Tutorials" do
     expect("The Chilling Exorcism Of Anneliese Michel").to appear_before("The Bizarre Toxic Death Of Gloria Ramirez")
   end
 
+  scenario "Display message if fields are not filled in" do
+    visit new_admin_playlist_path
+
+    fill_in :playlist_id, with: "PLD8iUdp33PqSmH4NjDm6lk1YiNUhLCxj4"
+    fill_in :title, with: ""
+    fill_in :description, with: "Hey There Demons"
+    fill_in :thumbnail, with: "Thumbnail"
+
+    click_on "Save"
+    
+    expect(page).to have_content("Title can't be blank")
+  end
+
   scenario "Admin can import youtube playlist with more than 50 videos" do
     visit new_admin_playlist_path
 
