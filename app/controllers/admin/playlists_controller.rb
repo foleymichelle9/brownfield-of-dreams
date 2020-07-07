@@ -12,7 +12,8 @@ class Admin::PlaylistsController < Admin::BaseController
         :video_id => video_data[:id],
         :title => video_data[:snippet][:title],
         :description => video_data[:snippet][:description],
-        :thumbnail => video_data[:snippet][:thumbnails][:default]
+        :thumbnail => video_data[:snippet][:thumbnails][:default],
+        :position => video_data[:snippet][:position]
       }
       tutorial.videos.create(video_params)
     end
@@ -27,6 +28,6 @@ class Admin::PlaylistsController < Admin::BaseController
   private
 
   def playlist_params
-    params.permit(:title, :description, :playlist_id, :thumbnail)
+    params.permit(:title, :description, :playlist_id, :thumbnail, :position)
   end
 end
