@@ -15,10 +15,10 @@ class Admin::TutorialsController < Admin::BaseController
       flash[:error] = @tutorial.errors.full_messages.to_sentence
       render :new
     else 
-      binding.pry
       redirect_to "/admin/dashboard"
       flash[:notice] = %Q[Successfully created tutorial.<a href="/tutorials/#{@tutorial.id}">View it here.</a>].html_safe
-
+      bob = YoutubeService.new.playlist_info(new_tutorial_params[:playlist_id])
+      binding.pry
     end
   end
 
