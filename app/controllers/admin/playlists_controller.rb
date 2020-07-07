@@ -18,6 +18,9 @@ class Admin::PlaylistsController < Admin::BaseController
     end
       flash[:notice] = %Q[Successfully created tutorial.<a href="/tutorials/#{tutorial.id}">View it here.</a>].html_safe
       redirect_to admin_dashboard_path
+    else
+      flash[:error] = tutorial.errors.full_messages.to_sentence
+      render :new
     end
   end
 
