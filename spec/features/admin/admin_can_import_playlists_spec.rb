@@ -22,25 +22,30 @@ describe "Admin Tutorials" do
 
     click_on "Save"
     expect(current_path).to eq("/admin/dashboard")
-    expect(page).to have_content("Successfully created tutorial. View it here")
+
+    expect(page).to have_content("Successfully created tutorial.")
 
     click_on "View it here"
+    # expect(current_path).to eq(tutorial_path(tutorial))
+    expect("The Creepy Real-Life “Men In Black”").to appear_before("The Secret Society Of The Illuminati")
+    expect("The Secret Society Of The Illuminati").to appear_before("3 Horrifying Cases Of Ghosts And Demons")
+    expect("3 Horrifying Cases Of Ghosts And Demons").to appear_before("The Chilling Exorcism Of Anneliese Michel")
+    expect("The Chilling Exorcism Of Anneliese Michel").to appear_before("The Bizarre Toxic Death Of Gloria Ramirez")
+  end
 
+  scenario "Admin can import youtube playlist with more than 50 videos" do
+    visit new_admin_playlist_path
+
+    fill_in :playlist_id, with: "PLD8iUdp33PqSmH4NjDm6lk1YiNUhLCxj4"
+    fill_in :title, with: "BuzzFeed Unsolved SuperNatural"
+    fill_in :description, with: "Hey There Demons"
+    fill_in :thumbnail, with: "Thumbnail"
+
+    click_on "Save"
+    expect(current_path).to eq("/admin/dashboard")
+
+    expect(page).to have_content("Successfully created tutorial.")
+
+    click_on "View it here"
   end
 end
-
-
-# As an admin
-# When I visit '/admin/tutorials/new'
-# Then I should see a link for 'Import YouTube Playlist'
-# When I click 'Import YouTube Playlist'
-# Then I should see a form
-#
-# And when I fill in 'Playlist ID' with a valid ID
-# Then I should be on '/admin/dashboard'
-# And I should see a flash message that says 'Successfully created tutorial. View it here.'
-# And 'View it here' should be a link to '/tutorials/:id'
-# And when I click on 'View it here'
-# Then I should be on '/tutorials/:id'
-# And I should see all videos from the YouTube playlist
-# And the order should be the same as it was on YouTube
