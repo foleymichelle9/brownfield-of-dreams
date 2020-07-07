@@ -3,7 +3,10 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.find(params[:id])
   end
 
-  def create; end
+  def create
+  tutorial = Tutorial.new(new_tutorial_params)
+
+  end
 
   def new
     @tutorial = Tutorial.new
@@ -28,4 +31,8 @@ class Admin::TutorialsController < Admin::BaseController
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
   end
+
+  def new_tutorial_params
+      params.permit(:playlist_id)
+  end 
 end

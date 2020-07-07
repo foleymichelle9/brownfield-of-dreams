@@ -11,4 +11,5 @@ feature "An admin visiting the admin dashboard" do
 
     expect(page).to have_css(".admin-tutorial-card", count: 2)
   end
+
 end

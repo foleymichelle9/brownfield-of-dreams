@@ -7,6 +7,8 @@
   <%= f.label :thumbnail %>
   <%= f.text_field :thumbnail, class: "block col-4 field"  %>
 
+  <h3><%= link_to "Import YouTube Playlist", "/admin/playlists/new" %></h3>
+
   <h3>Videos</h3>
 
   <%= f.fields_for :videos do |builder| %>

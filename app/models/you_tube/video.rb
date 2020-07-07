@@ -10,4 +10,13 @@ module YouTube
       new(YoutubeService.new.video_info(id))
     end
   end
+
+  class Playlist
+    def initialize
+    end
+
+    def self.by_id(id)
+      new(YoutubeService.new.playlist_info(id))
+    end
+  end
 end
