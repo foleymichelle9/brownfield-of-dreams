@@ -14,7 +14,7 @@ describe "An Admin can add tutorial " do
     expect(current_path).to eq('/admin/dashboard')
     expect(page).to have_content('Successfully created tutorial.')
     click_on 'View it here'
-
+    save_and_open_page
     #expect(current_path).to eq('/tutorials/:id')
     expect(page).to have_content("Tying Shoe Laces Song")
     expect(page).to have_content("EASIEST Way To Teach Your Kid How To Tie Shoes!!!")
