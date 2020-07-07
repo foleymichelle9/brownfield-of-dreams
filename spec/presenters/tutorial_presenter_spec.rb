@@ -37,8 +37,8 @@ describe TutorialFacade do
 
       it "returns the last video if the current video is the last in the list" do
         learn_to_fight = create(:tutorial)
-        rocky = create(:video, tutorial: learn_to_fight, position: 1)
-        bloodsport = create(:video, tutorial: learn_to_fight, position: 2)
+        rocky = create(:video, tutorial: learn_to_fight, position: 2)
+        bloodsport = create(:video, tutorial: learn_to_fight, position: 1)
 
         presenter = TutorialFacade.new(learn_to_fight, bloodsport.id)
         expect(presenter.next_video).to eq(bloodsport)
