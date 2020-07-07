@@ -4,16 +4,21 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    @tutorial = Tutorial.new(new_tutorial_params)
-    if new_tutorial_params[:playlist_id].nil? || @tutorial.save
+    @tutorial = Tutorial.create!(new_tutorial_params)
+    @tutorial.save
+    #tutorial = Tutorial.find(params[:tutorial_id])
+
+    if new_tutorial_params[:playlist_id].nil? && @tutorial.save
       flash[:success] = "Successfully created tutorial"
       redirect_to "/tutorials/#{@tutorial.id}"
     elsif new_tutorial_params[:playlist_id].nil?
       flash[:error] = @tutorial.errors.full_messages.to_sentence
       render :new
     else 
+      binding.pry
       redirect_to "/admin/dashboard"
-      flash[:notice] = "Successfully created tutorial.#{view_context.link_to("View it here.", "/tutorials/#{@tutorial.id}")}"
+      flash[:notice] = %Q[Successfully created tutorial.<a href="/tutorials/#{@tutorial.id}">View it here.</a>].html_safe
+
     end
   end
 
@@ -38,10 +43,10 @@ class Admin::TutorialsController < Admin::BaseController
   private
 
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
+    params.require(:tutorial).permit(:tag_list, :title, :description, :playlist_id)
   end
 
   def new_tutorial_params
-        params.permit(:tag_list, :title, :description, :thumbnail, :playlist_id)
+        params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail, :playlist_id)
   end 
 end

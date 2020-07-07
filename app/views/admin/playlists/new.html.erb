@@ -1,5 +1,13 @@
-<%= form_tag "/admin/tutorials", method: :post %>
-    <%= label_tag :playlist_id %>
-    <%= text_field_tag :playlist_id %>
-    <%= submit_tag "Submit", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+# <%= form_tag "/admin/tutorials", method: :post %>
+#     <%= label_tag :playlist_id %>
+#     <%= text_field_tag :playlist_id %>
+#     <%= submit_tag "Submit", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+<%= form_for [:admin, @tutorial] do |f| %>
+  <%= f.label :playlist_id %>
+  <%= f.text_field :playlist_id, class: "block col-4 field" %>
+<%= f.hidden_field :title, value: "somthing" %>
+<%= f.hidden_field :description, value: "somthing" %>
+<%= f.hidden_field :thumbnail, value: "somthing" %>
+  <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+  <% end %>
 

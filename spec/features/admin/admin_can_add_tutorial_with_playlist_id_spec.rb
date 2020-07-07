@@ -8,12 +8,12 @@ describe "An Admin can add tutorial " do
 
     visit '/admin/tutorials/new'
     click_on 'Import YouTube Playlist'
-    fill_in :playlist_id, with: "PLpTHBOOvs-f2WJBInFYq1g-TxmG250HQ-"
+    fill_in "tutorial[playlist_id]", with: "PLpTHBOOvs-f2WJBInFYq1g-TxmG250HQ-"
     click_on 'Submit'
     
     expect(current_path).to eq('/admin/dashboard')
     save_and_open_page
-    expect(page).to have_content('Successfully created tutorial. View it here.')
+    expect(page).to have_content('Successfully created tutorial.')
     click_on 'View it here'
 
     expect(current_path).to eq('/tutorials/:id')
