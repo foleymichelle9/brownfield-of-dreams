@@ -20,11 +20,4 @@ class SearchResults
       Following.new(user_data)
     end
   end
-
-  # def playlists
-  #   json = YoutubeService.new.playlist_info(playlist_id)
-  #   @playlist = json.map do |video|
-  #     require "pry";binding.pry
-  #   end
-  # end
 end
