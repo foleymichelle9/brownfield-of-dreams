@@ -14,7 +14,7 @@ class Admin::VideosController < Admin::BaseController
       thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
       video = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
       video.save
-      
+
       flash[:success] = 'Successfully created video.'
     rescue StandardError
       flash[:error] = 'Unable to create video.'
