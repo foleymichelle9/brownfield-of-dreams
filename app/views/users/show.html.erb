@@ -35,6 +35,7 @@
         <% @followers.each do |follower| %>
           <ul class="follower">
           <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
+          <%= link_to "Add Friend" %>
           </ul>
         <%end%>
     </section>
