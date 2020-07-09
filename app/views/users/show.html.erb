@@ -5,8 +5,8 @@
   <button class = "btn btn-primary mb1 bg-teal"><%= link_to "Connect to GitHub", "/auth/github" %></button>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <p><b>Name:</b> <%= current_user.first_name  %> <%= current_user.last_name %></p>
+    <p><b>Email:</b> <%= current_user.email%></p>
   </ul>
 
   <h1>Bookmarked Segments</h1>
@@ -18,6 +18,15 @@
             <%= link_to video.title, tutorial_path(video.tutorial_id, video_id: video.id) %>
           </ul>
         <% end %>
+      <% end %>
+    </section>
+
+  </section>
+  <h1>Friends</h1>
+  <section>
+    <section class="friends">
+      <% if current_user.friendships.empty? %>
+        <p>You have no friends.</p>
       <% end %>
     </section>
   </section>
@@ -43,8 +52,11 @@
         <p>You have no followers.</p>
       <% else %>
         <% @followers.each do |follower| %>
-          <ul class="follower">
+          <ul class="follower-<%= follower.login%>">
           <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
+          <% if follower.has_account? %>
+            <%= button_to 'Add Friend', "/friendships", method: :post %>
+          <% end %>
           </ul>
         <%end%>
     </section>
@@ -57,7 +69,12 @@
       <% else %>
         <% @followings.each do |following| %>
           <ul class="following">
-          <%= link_to following.login, "https://www.github.com/#{following.login}" %>
+            <section id=following-<%= following.login %>>
+              <%= link_to following.login, "https://www.github.com/#{following.login}" %>
+                <% if following.has_account? %>
+                  <%= button_to 'Add Friend', "/friendships/#{following.login}", method: :post %>
+                <% end %>
+            </section>
           </ul>
       <%end%>
     </section>

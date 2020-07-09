@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     token = auth_hash[:credentials][:token]
     current_user.update(github_token: token)
+    current_user.github_conn = "true"
     redirect_to dashboard_path
   end
 
