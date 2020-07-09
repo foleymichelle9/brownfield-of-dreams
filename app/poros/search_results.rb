@@ -15,6 +15,12 @@ class SearchResults
     end
   end
 
+  def get_email_and_name(github_username, github_token)
+    github_service = GithubService.new(github_token)
+    response = github_service.github_email_and_name(github_username, github_token)
+    [response[:email], response[:name]]
+  end
+
   def followers
   data = github_service(@token).list_followers
     @followers = data.map do |user_data|

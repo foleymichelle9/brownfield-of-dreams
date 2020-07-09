@@ -1,0 +1,7 @@
+<h2>Invite a Friend</h2>
+
+<%= form_tag "/dashboard", method: :get do %>
+  <%= label_tag :github_handle %>
+  <%= text_field_tag :github_handle%><br>
+  <%= submit_tag "Send Invite" %>
+<% end %>

@@ -40,6 +40,9 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
+
+  get '/invite', to: 'invite#new'
+
   post '/friendships', to: 'friendships#create'
 
   # Is this being used?

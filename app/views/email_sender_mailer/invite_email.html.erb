@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    Hello <%= @name %>,
+
+    <%= @user.first_name %> has invited you to join Brownfield of Dreams. You can create an account <%= link_to "here", new_user_url %>.
+  </body>
+</html>
