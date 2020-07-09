@@ -1,26 +1,33 @@
-# Brownfield Of Dreams
+# Brownfield of Dreams (Turing Tutorials)
 
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+BE MOD3 Group Project 1
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+[Visit Our Brownfiled of Dreams Application] [https://tragically-canoe-07528.herokuapp.com/]
 
-### Project Board
+** Team Members **
+[Michelle Foley] [https://github.com/foleymichelle9]
+[Sage Lee] [https://github.com/sagemlee]
+[Melanie Tran] [https://github.com/melatran]
 
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
+## Background Information
 
-**Learning Goals and Labels**
+This is a Ruby on Rails application called Turing Tutorials. It is used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments implemented using YouTube's API. The app also allows users to connect to their GitHub account to retrive information about their repos, followers, and see who they're following. There are two types of users (default regular user and an admin). Both roles have different functionality and power.
 
-The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
+### Prerequisits
 
-Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
+- Ruby 2.4.1
+- Rails 5.2.0
 
-### About the Project
+### Technologies
 
-This is a Ruby on Rails application used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
+* [Stimulus](https://github.com/stimulusjs/stimulus)
+* [will_paginate](https://github.com/mislav/will_paginate)
+* [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
+* [webpacker](https://github.com/rails/webpacker)
+* [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
+* [chromedriver-helper](http://chromedriver.chromium.org/)
 
-A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
-
-## Local Setup
+### Setup
 
 Clone down the repo
 ```
@@ -46,7 +53,12 @@ $ rails db:migrate
 $ rails db:seed
 ```
 
-### Youtube API
+Run the tests
+```
+bundle exec rspec
+```
+
+#### Youtube API
 
 This project makes use of the Youtube API.
 
@@ -57,25 +69,3 @@ Once you have obtained an API key and enabled the API:
 1. Run `bundle exec figaro install`
 1. This will create the file `config/application.yml`. Open that file.
 1. Append the following to that file: `YOUTUBE_API_KEY: <your api key>`, `replacing <your api key>` with the api key you just obtained.
-
-## Test Suite
-
-You can run the test suite with:
-
-```ruby
-$ bundle exec rspec
-```
-
-If set up correctly, and assuming you have internet access and the Youtube API is functioning correctly, you should have all passing tests.
-
-## Technologies
-* [Stimulus](https://github.com/stimulusjs/stimulus)
-* [will_paginate](https://github.com/mislav/will_paginate)
-* [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
-* [webpacker](https://github.com/rails/webpacker)
-* [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
-* [chromedriver-helper](http://chromedriver.chromium.org/)
-
-### Versions
-* Ruby 2.4.1
-* Rails 5.2.0
