@@ -1,7 +1,8 @@
 class FriendshipsController < ApplicationController
   def create
-    friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-    if friendship.save
+    user = User.find_by(uid: params[:uid])
+    @friendship = current_user.friendships.create(friend_id: user.id)
+    if @friendship.save
       flash[:notice] = "You have a new friend."
     else
       flash[:error] = "Unable to add existing friend."

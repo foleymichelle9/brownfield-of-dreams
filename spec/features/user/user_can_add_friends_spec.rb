@@ -11,14 +11,14 @@ describe "User Has Friends through Github" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
     visit dashboard_path
-    save_and_open_page
+  
     within ".friends" do
       expect(page).to have_content("You have no friends.")
     end
 
-    within ".following-#{user2.github_username}" do
+    within ".following-sagemlee" do
       expect(page).to have_content("sagemlee")
-      click_on "Add Friend"
+      click_on 'Add Friend'
     end
 
     # expect(page).to have_content("You have a new friend.")
