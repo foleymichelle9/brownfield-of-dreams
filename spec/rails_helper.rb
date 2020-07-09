@@ -21,6 +21,12 @@ end
 
 SimpleCov.start "rails"
 
+# SimpleCov.start do
+#   "rails"
+#   add_filter "/app/channels/application_cable/channel.rb"
+# end
+
+
 Shoulda::Matchers.configure do |config|
     config.integrate do |with|
     with.test_framework :rspec
@@ -38,6 +44,15 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
+end
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+      :provider => 'github',
+      :uid => '01234',
+      :credentials => {token: ENV['GITHUB_ACCESS_TOKEN']}
+      })
 end
 
 VCR.configure do |config|

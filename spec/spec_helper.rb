@@ -3,8 +3,11 @@ require 'vcr'
 
 RSpec.configure do |config|
 
+  # require 'webmock/rspec'
+
   config.before(:suite) do
      DatabaseCleaner.clean_with(:truncation)
+     OmniAuth.config.mock_auth[:github] = nil
    end
 
    config.before(:each) do

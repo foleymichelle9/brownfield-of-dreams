@@ -8,8 +8,8 @@ describe 'User Dashboard' do
 
     visit dashboard_path
 
-    within('.github') do
-      expect(page).to have_css(".following", count: 5)
+    within('.followings') do
+      expect(page).to have_content("muydanny")
     end
   end
 end
