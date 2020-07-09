@@ -1,3 +1,6 @@
+require 'webmock/rspec'
+require 'vcr'
+
 RSpec.configure do |config|
 
   # require 'webmock/rspec'
