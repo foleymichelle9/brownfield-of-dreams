@@ -5,19 +5,38 @@
   <button class = "btn btn-primary mb1 bg-teal"><%= link_to "Connect to GitHub", "/auth/github" %></button>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <p><b>Name:</b> <%= current_user.first_name  %> <%= current_user.last_name %></p>
+    <p><b>Email:</b> <%= current_user.email%></p>
   </ul>
 
+  <h1>Bookmarked Segments</h1>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <section class="bookmark_segments">
+      <% if !current_user.order_bookmarks.nil? %>
+        <% current_user.order_bookmarks.each do |video| %>
+          <ul class="bookmarks">
+            <%= link_to video.title, tutorial_path(video.tutorial_id, video_id: video.id) %>
+          </ul>
+        <% end %>
+      <% end %>
+    </section>
+  </section>
+
+  <h1>Friends</h1>
+  <section>
+    <section class="friends">
+      <% if current_user.friendships.empty? %>
+        <p>You have no friends.</p>
+      <% end %>
+    </section>
   </section>
 
   <section class="github">
     <h1>GitHub</h1>
-
   <h3>GitHub Repos</h3>
-  <% if !@repos.nil? %>
+  <% if @repos.nil? %>
+    <p>You have zero repos.</p>
+  <% else %>
     <section class="repos">
       <% @repos.each do |repo| %>
         <ul class="repo">
@@ -33,9 +52,9 @@
         <p>You have no followers.</p>
       <% else %>
         <% @followers.each do |follower| %>
-          <ul class="follower">
+          <ul class="follower-<%= follower.login%>">
           <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
-          <%= link_to "Add Friend" %>
+          <%= button_to "Add Friend", "/friendships/#{follower.login}", method: :post %>
           </ul>
         <%end%>
     </section>
@@ -47,8 +66,9 @@
         <p>You are not following any accounts.</p>
       <% else %>
         <% @followings.each do |following| %>
-          <ul class="following">
+          <ul class="following-<%= following.login%>">
           <%= link_to following.login, "https://www.github.com/#{following.login}" %>
+          <%= button_to "Add Friend", "/friendships/#{following.login}", method: :post %>
           </ul>
       <%end%>
     </section>
