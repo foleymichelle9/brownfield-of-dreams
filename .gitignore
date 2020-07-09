@@ -34,6 +34,8 @@
 yarn-debug.log*
 .yarn-integrity
 
+
+echo "coverage" >> .gitignore
 /app/channels/application_cable/channel.rb
 /app/channels/application_cable/connection.rb
 /app/controllers/about_controller.rb
