@@ -1,5 +1,5 @@
 class Following
-  attr_reader :login, :id
+  attr_reader :login, :uid
 
   def initialize(attributes)
     @login = attributes[:login]
