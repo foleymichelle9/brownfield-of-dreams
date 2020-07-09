@@ -2,7 +2,7 @@
 
 BE MOD3 Group Project 1
 
-[Visit Our Brownfiled of Dreams Application] (https://tragically-canoe-07528.herokuapp.com/)
+[Visit Our Brownfiled of Dreams Application](https://tragically-canoe-07528.herokuapp.com/)
 
 **Team Members**
 
