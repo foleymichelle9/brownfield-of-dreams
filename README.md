@@ -2,12 +2,15 @@
 
 BE MOD3 Group Project 1
 
-[Visit Our Brownfiled of Dreams Application] [https://tragically-canoe-07528.herokuapp.com/]
+[Visit Our Brownfiled of Dreams Application] (https://tragically-canoe-07528.herokuapp.com/)
 
-** Team Members **
-[Michelle Foley] [https://github.com/foleymichelle9]
-[Sage Lee] [https://github.com/sagemlee]
-[Melanie Tran] [https://github.com/melatran]
+**Team Members**
+
+[Michelle Foley](https://github.com/foleymichelle9)
+
+[Sage Lee](https://github.com/sagemlee)
+
+[Melanie Tran](https://github.com/melatran)
 
 ## Background Information
 
