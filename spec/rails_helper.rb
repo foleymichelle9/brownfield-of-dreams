@@ -21,6 +21,12 @@ end
 
 SimpleCov.start "rails"
 
+# SimpleCov.start do
+#   "rails"
+#   add_filter "/app/channels/application_cable/channel.rb"
+# end
+
+
 Shoulda::Matchers.configure do |config|
     config.integrate do |with|
     with.test_framework :rspec

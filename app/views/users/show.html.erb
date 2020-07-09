@@ -54,7 +54,7 @@
         <% @followers.each do |follower| %>
           <ul class="follower-<%= follower.login%>">
           <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
-          <% if follower.has_account %>
+          <% if follower.has_account? %>
             <%= button_to 'Add Friend', "/friendships", method: :post %>
           <% end %>
           </ul>
@@ -68,11 +68,13 @@
         <p>You are not following any accounts.</p>
       <% else %>
         <% @followings.each do |following| %>
-          <ul class="following-<%= following.login%>">
-          <%= link_to following.login, "https://www.github.com/#{following.login}" %>
-            <% if following.has_account %>
-              <%= button_to 'Add Friend', "/friendships", method: :post %>
-            <% end %>
+          <ul class="following">
+            <section id=following-<%= following.login %>>
+              <%= link_to following.login, "https://www.github.com/#{following.login}" %>
+                <% if following.has_account? %>
+                  <%= button_to 'Add Friend', "/friendships/#{following.login}", method: :post %>
+                <% end %>
+            </section>
           </ul>
       <%end%>
     </section>

@@ -6,7 +6,7 @@ class Follower
     @uid = attributes[:id]
   end
 
-  def has_account
-    User.exists?(uid: @uid)
+  def has_account?
+    User.find_by(uid: @uid)
   end
 end
