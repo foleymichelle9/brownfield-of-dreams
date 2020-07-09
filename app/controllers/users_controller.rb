@@ -6,6 +6,15 @@ class UsersController < ApplicationController
       @repos = search_results.repos
       @followers = search_results.followers
       @followings = search_results.followings
+      @invitee = search_results.get_email_and_name(params[:github_handle], current_user.github_token)
+
+    if @invitee[0]
+      EmailSenderMailer.with(user: current_user, email: @invitee[0], name: @invitee[1]).invite_email.deliver_now
+
+      flash.now[:success] = 'Successfully sent invite!'
+    else
+      flash.now[:error] = "The Github user you selected doesn't have an email address associated with their account."
+    end
     end
   end
 
